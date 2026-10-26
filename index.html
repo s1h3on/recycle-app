@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>분리수거 도우미</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>♻️ 분리수거 도우미</h1>
+    <p class="sub">카메라에 쓰레기를 비추거나 사진을 올리면 어떻게 버려야 하는지 알려드려요.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="tabs">
+        <button id="tab-cam" class="tab active">📷 카메라</button>
+        <button id="tab-upload" class="tab">🖼️ 사진 업로드</button>
+      </div>
+
+      <div id="panel-cam" class="panel">
+        <div id="webcam-container" class="viewer">
+          <div class="placeholder">카메라를 시작해 주세요</div>
+        </div>
+        <div class="row">
+          <button id="btn-start" class="primary">카메라 시작</button>
+          <button id="btn-flip" class="secondary" hidden>카메라 전환</button>
+          <button id="btn-stop" class="secondary" hidden>정지</button>
+        </div>
+      </div>
+
+      <div id="panel-upload" class="panel" hidden>
+        <label class="viewer drop" id="drop">
+          <input type="file" id="file" accept="image/*" hidden />
+          <img id="preview" alt="" hidden />
+          <div class="placeholder" id="drop-text">여기를 눌러 사진을 선택하거나<br />이미지를 끌어다 놓으세요</div>
+        </label>
+      </div>
+    </section>
+
+    <section class="card result" id="result">
+      <div class="status" id="status">모델을 불러오는 중…</div>
+      <div class="verdict" id="verdict" hidden>
+        <div class="badge" id="badge"></div>
+        <div>
+          <div class="v-title" id="v-title"></div>
+          <div class="v-conf" id="v-conf"></div>
+        </div>
+      </div>
+      <ul class="guide" id="guide"></ul>
+      <div class="bars" id="bars"></div>
+    </section>
+  </main>
+
+  <footer>Teachable Machine 모델 기반 · 결과는 참고용이에요. 지역별 배출 기준을 확인하세요.</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
